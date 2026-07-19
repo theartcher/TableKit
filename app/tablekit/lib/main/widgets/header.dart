@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tablekit/main/widgets/language-switcher.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
+import 'package:tablekit/main/widgets/language_switcher.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  final Locale locale;
+  final ValueChanged<Locale> onLocaleChanged;
+
+  const Header({
+    super.key,
+    required this.locale,
+    required this.onLocaleChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'TABLEKIT',
+          l10n.headerTitle,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
@@ -19,7 +29,10 @@ class Header extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        // LanguageSwitcher(),
+        LanguageSwitcher(
+          currentLocale: locale,
+          onLocaleChanged: onLocaleChanged,
+        ),
       ],
     );
   }

@@ -1,41 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 import 'package:tablekit/main/widgets/game_tile.dart';
 import 'package:tablekit/main/widgets/header.dart';
+import 'package:tablekit/main/widgets/more-games-footer.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Locale locale;
+  final ValueChanged<Locale> onLocaleChanged;
 
-  static const GameTileData = [
-    {
-      'title': 'ARMADILLO',
-      'textColor': Color(0xFFC27803),
-      'containerColor': Color(0xFFE8DCC4),
-    },
-    {
-      'title': '1000 BOMMEN EN GRANATEN',
-      'textColor': Color(0xFFFFFFFF),
-      'containerColor': Color(0xFF2C578F),
-    },
-  ];
+  const HomeScreen({
+    super.key,
+    required this.locale,
+    required this.onLocaleChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final gameTileData = [
+      {
+        'title': l10n.armadilloTitle,
+        'textColor': const Color(0xFFC27803),
+        'containerColor': const Color(0xFFE8DCC4),
+      },
+      {
+        'title': l10n.thousandBombsTitle,
+        'textColor': const Color(0xFFFFFFFF),
+        'containerColor': const Color(0xFF2C578F),
+      },
+    ];
+
     return Scaffold(
-      backgroundColor: Color(0xFFF7F4F0),
+      backgroundColor: const Color(0xFFF7F4F0),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Header(),
+              Header(locale: locale, onLocaleChanged: onLocaleChanged),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.separated(
-                  itemCount: GameTileData.length,
+                  itemCount: gameTileData.length + 1,
                   padding: EdgeInsets.zero,
                   itemBuilder: (context, index) {
-                    final gameData = GameTileData[index];
+                    if (index == gameTileData.length) {
+                      return const MoreGamesFooter();
+                    }
+
+                    final gameData = gameTileData[index];
 
                     return GameTile(
                       gameData['title'] as String,
@@ -44,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) =>
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 16),
                 ),
               ),
             ],
