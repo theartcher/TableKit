@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tablekit/l10n/generated/app_localizations.dart';
-import 'package:tablekit/main/screens/home_screen.dart';
 import 'package:tablekit/main/utility/constants.dart';
 import 'package:tablekit/main/utility/persist_languages.dart';
 

@@ -4,5 +4,82 @@
   "headerTitle": "TABLEKIT",
   "armadilloTitle": "ARMADILLO",
   "thousandBombsTitle": "1000 BOMBS AND GRENADES",
-  "moreGamesfooter": "MORE GAMES COMING SOON"
+  "moreGamesfooter": "MORE GAMES COMING SOON",
+  "cardTreasureIslandTitle": "Treasure Island",
+  "@cardTreasureIslandTitle": {
+    "description": "Title of the Treasure Island pirate card"
+  },
+  "cardTreasureIslandExplanation": "After a throw, you may place one or more dice on this card to protect them. You can pick them up later and throw them again. Only dice that are on the card score points.",
+  "cardTreasureIslandFactBonus": "Dice placed on the card are protected from a 3rd skull",
+  "cardTreasureIslandFactLimit": "Only dice placed on the card score points",
+  "cardPirateTitle": "Pirate",
+  "@cardPirateTitle": {
+    "description": "Title of the Pirate pirate card"
+  },
+  "cardPirateExplanation": "All points you score this turn are doubled. If you sail to Skull Island, the other players also lose double the usual penalty per skull.",
+  "cardPirateFactBonus": "All points scored this turn are doubled",
+  "cardPirateFactRisk": "Sailing to Skull Island also doubles the penalty for the other players",
+  "cardSkullTitle": "Skull",
+  "@cardSkullTitle": {
+    "description": "Title of the Skull pirate card"
+  },
+  "cardSkullExplanation": "Your turn starts with 1 or 2 skulls already counted, on top of whatever you throw. This makes it more likely you'll reach 3 skulls, and more likely you'll sail to Skull Island.",
+  "cardSkullFactRisk": "Turn starts with 1 or 2 skulls already counted",
+  "cardSkullFactRisk2": "Higher chance of sailing to Skull Island",
+  "cardGuardTitle": "Guard",
+  "@cardGuardTitle": {
+    "description": "Title of the Guard pirate card"
+  },
+  "cardGuardExplanation": "Once during your turn, you may reroll a single thrown skull on its own. If you reach 3 skulls at any point, your turn ends immediately and you can no longer use this.",
+  "cardGuardFactBonus": "Reroll one thrown skull, once per turn",
+  "cardGuardFactLimit": "3 skulls still end your turn immediately, even before you can use this",
+  "cardBattleshipTitle": "Battleship",
+  "@cardBattleshipTitle": {
+    "description": "Title of the Battleship pirate card"
+  },
+  "cardBattleshipExplanation": "You must throw at least the number of sabres shown on the card, then stop your turn voluntarily. Succeed, and you score bonus points on top of your usual score. Fail, and you score nothing and lose points instead. You can never sail to Skull Island with this card.",
+  "cardBattleshipFactLimit": "Must throw at least the shown number of sabres, then stop voluntarily",
+  "cardBattleshipFactRisk": "Fail to reach that number and you score 0 points, plus a penalty",
+  "cardBattleshipFactLimit2": "Sailing to Skull Island is not possible with this card",
+  "cardCoinTitle": "Coin",
+  "@cardCoinTitle": {
+    "description": "Title of the Coin pirate card"
+  },
+  "cardCoinExplanation": "Your turn starts with an extra gold coin, which counts either on its own or as part of a combination.",
+  "cardCoinFactBonus": "Turn starts with an extra gold coin, usable alone or in a combination",
+  "cardDiamondTitle": "Diamond",
+  "@cardDiamondTitle": {
+    "description": "Title of the Diamond pirate card"
+  },
+  "cardDiamondExplanation": "Your turn starts with an extra diamond, which counts either on its own or as part of a combination.",
+  "cardDiamondFactBonus": "Turn starts with an extra diamond, usable alone or in a combination",
+  "cardAnimalsTitle": "Animals",
+  "@cardAnimalsTitle": {
+    "description": "Title of the Animals pirate card"
+  },
+  "cardAnimalsExplanation": "Any monkeys and parrots you throw count together as a single combination. For example, 2 parrots and 3 monkeys score as a combination of 5 matching dice.",
+  "cardAnimalsFactBonus": "Thrown monkeys and parrots count together as one combination",
+  "cardPeaceTitle": "Peace",
+  "@cardPeaceTitle": {
+    "description": "Title of the Peace pirate card"
+  },
+  "cardPeaceExplanation": "You must finish your turn without throwing a single sabre. Succeed, and your points for the turn are doubled. Fail, and you score nothing and lose 500 points per sabre thrown instead. If you sail to Skull Island, the no-sabre rule applies there too.",
+  "cardPeaceFactBonus": "Finish the turn with no sabres thrown and double your points",
+  "cardPeaceFactRisk": "Throw a sabre and you score nothing, losing 500 points per sabre",
+  "cardPeaceFactLimit": "The no-sabre rule also applies if you sail to Skull Island",
+  "cardZombieAttackTitle": "Zombie attack",
+  "@cardZombieAttackTitle": {
+    "description": "Title of the Zombie attack pirate card"
+  },
+  "cardZombieAttackExplanation": "Keep throwing until every die shows either a sabre or a skull. Skulls can't be rerolled, but 3 or more skulls don't end your turn and you can't sail to Skull Island. Throw at least 5 sabres in total and you score 1200 points; fall short, and those 1200 points are split among the other players instead.",
+  "cardZombieAttackFactLimit": "Keep throwing until every die shows a sabre or a skull; skulls don't end the turn or send you to Skull Island",
+  "cardZombieAttackFactBonus": "5 or more sabres thrown in total earns 1200 points",
+  "cardZombieAttackFactRisk": "Fewer than 5 sabres and the 1200 points go to the other players instead",
+  "cardShipwreckTitle": "Shipwreck",
+  "@cardShipwreckTitle": {
+    "description": "Title of the Shipwreck pirate card"
+  },
+  "cardShipwreckExplanation": "You may only throw twice. Skulls can't be rerolled, but even 3 or more skulls don't stop your second throw — you just can't sail to Skull Island. After the second throw, only diamonds and gold coins score, and their points are doubled.",
+  "cardShipwreckFactLimit": "Only two throws allowed; skulls don't stop the second throw, but Skull Island isn't possible",
+  "cardShipwreckFactBonus": "After the second throw, only diamonds and gold coins score — doubled"
 }
