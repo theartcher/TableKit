@@ -24,6 +24,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get moreGamesfooter => 'MORE GAMES COMING SOON';
 
   @override
+  String get cardBackButton => 'Back';
+
+  @override
+  String get cardExplanationTitle => 'How does the card work?';
+
+  @override
   String get cardTreasureIslandTitle => 'Treasure Island';
 
   @override

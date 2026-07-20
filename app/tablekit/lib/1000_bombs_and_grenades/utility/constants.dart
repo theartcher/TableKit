@@ -10,8 +10,8 @@ const onPrimaryColor = Color(0xFFFFFFFF);
 const positiveColor = Color(0xFF9CFF79);
 const positiveVariantColor = Color(0x2619871D);
 
-const effectColor = Color(0xFFFFF879);
-const effectVariantColor = Color(0x26758719);
+const effectColor = Color.fromARGB(255, 255, 181, 121);
+const effectVariantColor = Color.fromARGB(37, 135, 82, 25);
 
 const negativeColor = Color(0xFFFF7979);
 const negativeVariantColor = Color(0x26872419);

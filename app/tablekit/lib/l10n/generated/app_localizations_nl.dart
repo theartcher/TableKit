@@ -24,6 +24,12 @@ class AppLocalizationsNl extends AppLocalizations {
   String get moreGamesfooter => 'BINNENKORT MEER SPELLEN';
 
   @override
+  String get cardBackButton => 'Terug';
+
+  @override
+  String get cardExplanationTitle => 'Hoe werkt de kaart?';
+
+  @override
   String get cardTreasureIslandTitle => 'Schateiland';
 
   @override

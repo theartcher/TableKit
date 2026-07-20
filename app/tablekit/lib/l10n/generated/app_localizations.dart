@@ -128,6 +128,18 @@ abstract class AppLocalizations {
   /// **'MORE GAMES COMING SOON'**
   String get moreGamesfooter;
 
+  /// No description provided for @cardBackButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get cardBackButton;
+
+  /// No description provided for @cardExplanationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How does the card work?'**
+  String get cardExplanationTitle;
+
   /// Title of the Treasure Island pirate card
   ///
   /// In en, this message translates to:

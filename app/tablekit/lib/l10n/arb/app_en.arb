@@ -5,6 +5,8 @@
   "armadilloTitle": "ARMADILLO",
   "thousandBombsTitle": "1000 BOMBS AND GRENADES",
   "moreGamesfooter": "MORE GAMES COMING SOON",
+  "cardBackButton": "Back",
+  "cardExplanationTitle": "How does the card work?",
   "cardTreasureIslandTitle": "Treasure Island",
   "@cardTreasureIslandTitle": {
     "description": "Title of the Treasure Island pirate card"
