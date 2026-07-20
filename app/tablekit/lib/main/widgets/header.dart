@@ -4,14 +4,7 @@ import 'package:tablekit/l10n/generated/app_localizations.dart';
 import 'package:tablekit/main/widgets/language_switcher.dart';
 
 class Header extends StatelessWidget {
-  final Locale locale;
-  final ValueChanged<Locale> onLocaleChanged;
-
-  const Header({
-    super.key,
-    required this.locale,
-    required this.onLocaleChanged,
-  });
+  const Header({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +22,7 @@ class Header extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        LanguageSwitcher(
-          currentLocale: locale,
-          onLocaleChanged: onLocaleChanged,
-        ),
+        const LanguageSwitcher(),
       ],
     );
   }

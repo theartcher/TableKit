@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tablekit/l10n/generated/app_localizations.dart';
 import 'package:tablekit/main/screens/home_screen.dart';
+import 'package:tablekit/main/utility/constants.dart';
 import 'package:tablekit/main/utility/persist_languages.dart';
 
 void main() {
@@ -14,6 +15,9 @@ class MainApp extends StatefulWidget {
 
   @override
   State<MainApp> createState() => _MainAppState();
+
+  static _MainAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<_MainAppState>()!;
 }
 
 class _MainAppState extends State<MainApp> {
@@ -35,7 +39,7 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
-  void _handleLocaleChanged(Locale locale) {
+  void changeLocale(Locale locale) {
     setState(() {
       _locale = locale;
     });
@@ -45,7 +49,8 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: routerConfig,
       debugShowCheckedModeBanner: false,
       locale: _locale,
       supportedLocales: PersistLanguages.supportedLocales,
@@ -68,7 +73,6 @@ class _MainAppState extends State<MainApp> {
 
         return PersistLanguages.englishLocale;
       },
-      home: HomeScreen(locale: _locale, onLocaleChanged: _handleLocaleChanged),
     );
   }
 }

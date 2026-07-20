@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tablekit/main.dart';
 import 'package:tablekit/main/utility/persist_languages.dart';
 
 class LanguageSwitcher extends StatelessWidget {
-  final Locale currentLocale;
-  final ValueChanged<Locale> onLocaleChanged;
-
-  const LanguageSwitcher({
-    super.key,
-    required this.currentLocale,
-    required this.onLocaleChanged,
-  });
+  const LanguageSwitcher({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final currentLocale = Localizations.localeOf(context);
     final selectedIndex = currentLocale.languageCode == 'nl' ? 1 : 0;
 
     return Container(
@@ -35,7 +30,8 @@ class LanguageSwitcher extends StatelessWidget {
           final nextLocale = index == 0
               ? PersistLanguages.englishLocale
               : PersistLanguages.dutchLocale;
-          onLocaleChanged(nextLocale);
+          MainApp.of(context).changeLocale(nextLocale);
+          PersistLanguages.saveLocale(nextLocale);
         },
         borderRadius: BorderRadius.circular(999),
         borderColor: Colors.transparent,

@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tablekit/l10n/generated/app_localizations.dart';
+import 'package:tablekit/main/utility/constants.dart';
 import 'package:tablekit/main/widgets/game_tile.dart';
 import 'package:tablekit/main/widgets/header.dart';
 import 'package:tablekit/main/widgets/more-games-footer.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Locale locale;
-  final ValueChanged<Locale> onLocaleChanged;
-
-  const HomeScreen({
-    super.key,
-    required this.locale,
-    required this.onLocaleChanged,
-  });
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +16,13 @@ class HomeScreen extends StatelessWidget {
         'title': l10n.armadilloTitle,
         'textColor': const Color(0xFFC27803),
         'containerColor': const Color(0xFFE8DCC4),
+        'routeKey': ROUTE_ARMADILLO,
       },
       {
         'title': l10n.thousandBombsTitle,
         'textColor': const Color(0xFFFFFFFF),
         'containerColor': const Color(0xFF2C578F),
+        'routeKey': ROUTE_TBAG,
       },
     ];
 
@@ -38,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Header(locale: locale, onLocaleChanged: onLocaleChanged),
+              const Header(),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.separated(
@@ -55,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                       gameData['title'] as String,
                       gameData['textColor'] as Color,
                       gameData['containerColor'] as Color,
+                      gameData['routeKey'] as String,
                     );
                   },
                   separatorBuilder: (context, index) =>
