@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: GridView.builder(
                 shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: pirateCards.length,
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 200,

@@ -463,6 +463,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your score is doubled'**
   String get cardShipwreckFactBonus1;
+
+  /// No description provided for @armCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate'**
+  String get armCalculate;
+
+  /// No description provided for @armScoreboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Scoreboard'**
+  String get armScoreboard;
+
+  /// No description provided for @armEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate'**
+  String get armEstimate;
+
+  /// No description provided for @armNoPlayersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No players created yet.'**
+  String get armNoPlayersYet;
+
+  /// No description provided for @armAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get armAdd;
+
+  /// No description provided for @armReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get armReset;
+
+  /// No description provided for @arm1st.
+  ///
+  /// In en, this message translates to:
+  /// **'1st'**
+  String get arm1st;
+
+  /// No description provided for @arm2nd.
+  ///
+  /// In en, this message translates to:
+  /// **'2nd'**
+  String get arm2nd;
+
+  /// No description provided for @arm3rd.
+  ///
+  /// In en, this message translates to:
+  /// **'3rd'**
+  String get arm3rd;
+
+  /// No description provided for @armAddPlayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Player'**
+  String get armAddPlayer;
+
+  /// No description provided for @armAddPlayerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter player name'**
+  String get armAddPlayerName;
+
+  /// No description provided for @armCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get armCancel;
+
+  /// No description provided for @armResetScoreboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Scoreboard'**
+  String get armResetScoreboard;
+
+  /// No description provided for @armResetScoreboardMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to reset just the scoreboard or reset everything?'**
+  String get armResetScoreboardMessage;
+
+  /// No description provided for @armResetScoresOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Scores Only'**
+  String get armResetScoresOnly;
+
+  /// No description provided for @armResetEverything.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Everything'**
+  String get armResetEverything;
+
+  /// No description provided for @armMin.
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get armMin;
+
+  /// No description provided for @armMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get armMax;
+
+  /// No description provided for @armAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg'**
+  String get armAverage;
+
+  /// No description provided for @armEstimateHeaderSection1.
+  ///
+  /// In en, this message translates to:
+  /// **'I want to roll the a...'**
+  String get armEstimateHeaderSection1;
+
+  /// No description provided for @armEstimateHeaderSection2.
+  ///
+  /// In en, this message translates to:
+  /// **'You should throw...'**
+  String get armEstimateHeaderSection2;
 }
 
 class _AppLocalizationsDelegate

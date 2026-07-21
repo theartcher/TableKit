@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         'textColor': const Color(0xFFC27803),
         'containerColor': const Color(0xFFE8DCC4),
         'routeKey': ROUTE_ARMADILLO,
-        'isDisabled': true,
+        'isDisabled': false,
       },
       {
         'title': l10n.thousandBombsTitle,

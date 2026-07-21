@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:tablekit/l10n/generated/app_localizations.dart';
 import 'package:tablekit/main/utility/constants.dart';
 import 'package:tablekit/main/utility/persist_languages.dart';
@@ -48,6 +49,9 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    GoTransition.defaultCurve = Curves.easeOut;
+    GoTransition.defaultDuration = const Duration(milliseconds: 400);
+
     return MaterialApp.router(
       routerConfig: routerConfig,
       debugShowCheckedModeBanner: false,

@@ -222,4 +222,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardShipwreckFactBonus1 => 'Your score is doubled';
+
+  @override
+  String get armCalculate => 'Calculate';
+
+  @override
+  String get armScoreboard => 'Scoreboard';
+
+  @override
+  String get armEstimate => 'Estimate';
+
+  @override
+  String get armNoPlayersYet => 'No players created yet.';
+
+  @override
+  String get armAdd => 'Add';
+
+  @override
+  String get armReset => 'Reset';
+
+  @override
+  String get arm1st => '1st';
+
+  @override
+  String get arm2nd => '2nd';
+
+  @override
+  String get arm3rd => '3rd';
+
+  @override
+  String get armAddPlayer => 'Add Player';
+
+  @override
+  String get armAddPlayerName => 'Enter player name';
+
+  @override
+  String get armCancel => 'Cancel';
+
+  @override
+  String get armResetScoreboard => 'Reset Scoreboard';
+
+  @override
+  String get armResetScoreboardMessage =>
+      'Do you want to reset just the scoreboard or reset everything?';
+
+  @override
+  String get armResetScoresOnly => 'Reset Scores Only';
+
+  @override
+  String get armResetEverything => 'Reset Everything';
+
+  @override
+  String get armMin => 'Min';
+
+  @override
+  String get armMax => 'Max';
+
+  @override
+  String get armAverage => 'Avg';
+
+  @override
+  String get armEstimateHeaderSection1 => 'I want to roll the a...';
+
+  @override
+  String get armEstimateHeaderSection2 => 'You should throw...';
 }
