@@ -46,7 +46,7 @@ jobs:
         run: flutter pub get
 
       - name: Build web app
-        run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+        run: flutter build web --release --base-href "/"
 
       - name: Add GitHub Pages fallback
         run: cp build/web/index.html build/web/404.html
