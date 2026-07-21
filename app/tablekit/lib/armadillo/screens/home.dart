@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tablekit/armadillo/utility/constants.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 import 'package:tablekit/main/utility/constants.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     final fontSize = 40.0;
 
     return Scaffold(
@@ -19,18 +20,22 @@ class HomeScreen extends StatelessWidget {
             final velocity = details.primaryVelocity ?? 0;
 
             if (velocity < -defaultSwipeVelocity) {
-              context.go(ROUTE_SCOREBOARD);
+              context.go('$ROUTE_ARMADILLO/$ROUTE_SCOREBOARD');
+            }
+
+            if (velocity > defaultSwipeVelocity) {
+              context.go(ROUTE_HOME);
             }
           },
           onVerticalDragEnd: (details) {
             final velocity = details.primaryVelocity ?? 0;
 
             if (velocity > defaultSwipeVelocity) {
-              context.go(ROUTE_CALCULATE);
+              context.go('$ROUTE_ARMADILLO/$ROUTE_CALCULATE');
             }
 
             if (velocity < -defaultSwipeVelocity) {
-              context.go(ROUTE_ESTIMATE);
+              context.go('$ROUTE_ARMADILLO/$ROUTE_ESTIMATE');
             }
           },
           child: Column(
@@ -39,18 +44,18 @@ class HomeScreen extends StatelessWidget {
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    context.push(ROUTE_CALCULATE);
-                    print('Navigate to $ROUTE_CALCULATE');
+                    context.push('$ROUTE_ARMADILLO/$ROUTE_CALCULATE');
                   },
                   child: Container(
-                    color: colorTheme.primary,
+                    color: primaryColor,
                     child: Center(
                       child: Text(
-                        'Calculate',
+                        l10n.armCalculate,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: colorTheme.onPrimary,
+                          color: onPrimaryColor,
                           fontSize: fontSize,
+                          fontFamily: armadilloFontFamily,
                         ),
                       ),
                     ),
@@ -59,16 +64,17 @@ class HomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: GestureDetector(
-                  onTap: () => context.go(ROUTE_SCOREBOARD),
+                  onTap: () => context.go('$ROUTE_ARMADILLO/$ROUTE_SCOREBOARD'),
                   child: Container(
-                    color: colorTheme.tertiary,
+                    color: tertiaryColor,
                     child: Center(
                       child: Text(
-                        'Scoreboard',
+                        l10n.armScoreboard,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: colorTheme.onTertiary,
+                          color: onTertiaryColor,
                           fontSize: fontSize,
+                          fontFamily: armadilloFontFamily,
                         ),
                       ),
                     ),
@@ -77,16 +83,17 @@ class HomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: GestureDetector(
-                  onTap: () => context.go(ROUTE_ESTIMATE),
+                  onTap: () => context.go('$ROUTE_ARMADILLO/$ROUTE_ESTIMATE'),
                   child: Container(
-                    color: colorTheme.secondary,
+                    color: secondaryColor,
                     child: Center(
                       child: Text(
-                        'Estimate',
+                        l10n.armEstimate,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: colorTheme.onSecondary,
+                          color: onSecondaryColor,
                           fontSize: fontSize,
+                          fontFamily: armadilloFontFamily,
                         ),
                       ),
                     ),

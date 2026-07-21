@@ -226,4 +226,68 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get cardShipwreckFactBonus1 => 'Je score telt dubbel';
+
+  @override
+  String get armCalculate => 'Berekenen';
+
+  @override
+  String get armScoreboard => 'Scorebord';
+
+  @override
+  String get armEstimate => 'Schatten';
+
+  @override
+  String get armNoPlayersYet => 'Er zijn nog geen spelers aangemaakt.';
+
+  @override
+  String get armAdd => 'Toevoegen';
+
+  @override
+  String get armReset => 'Resetten';
+
+  @override
+  String get arm1st => '1e';
+
+  @override
+  String get arm2nd => '2e';
+
+  @override
+  String get arm3rd => '3e';
+
+  @override
+  String get armAddPlayer => 'Speler Toevoegen';
+
+  @override
+  String get armAddPlayerName => 'Voer speler naam in';
+
+  @override
+  String get armCancel => 'Annuleren';
+
+  @override
+  String get armResetScoreboard => 'Scorebord Resetten';
+
+  @override
+  String get armResetScoreboardMessage =>
+      'Wil je alleen het scorebord resetten of alles resetten?';
+
+  @override
+  String get armResetScoresOnly => 'Alleen Scores Resetten';
+
+  @override
+  String get armResetEverything => 'Alles Resetten';
+
+  @override
+  String get armMin => 'Min';
+
+  @override
+  String get armMax => 'Max';
+
+  @override
+  String get armAverage => 'Gem';
+
+  @override
+  String get armEstimateHeaderSection1 => 'Ik wil het volgende rollen...';
+
+  @override
+  String get armEstimateHeaderSection2 => 'Gooi de volgende stenen...';
 }

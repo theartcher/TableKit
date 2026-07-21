@@ -85,12 +85,13 @@ class Dice extends StatelessWidget {
           ),
           child: Center(
             child: Transform.translate(
-              offset: const Offset(1, 5),
+              offset: const Offset(0, 6),
               child: Text(
                 '${_getNumber()}',
                 style: TextStyle(
                   color: _getOnDiceColor(),
                   fontSize: _getFontSize(),
+                  fontFamily: armadilloFontFamily,
                 ),
               ),
             ),

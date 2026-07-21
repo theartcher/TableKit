@@ -5,24 +5,28 @@ import 'package:tablekit/armadillo/models/dice_type.dart';
 import 'package:tablekit/armadillo/stores/estimate_notifier.dart';
 import 'package:tablekit/armadillo/utility/constants.dart';
 import 'package:tablekit/armadillo/widgets/dice.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 
 class EstimateScreen extends StatelessWidget {
   const EstimateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+
     final store = EstimateNotifier();
     final diceSpacing = defaultSpacing * 4;
 
     final headerTitleStyle = TextStyle(
       fontSize: defaultDiceFontSize * 0.75,
-      color: colorTheme.onSecondary,
+      color: onSecondaryColor,
+      fontFamily: armadilloFontFamily,
     );
 
     final headerValueStyle = TextStyle(
       fontSize: defaultDiceFontSize,
-      color: colorTheme.primary,
+      color: primaryColor,
+      fontFamily: armadilloFontFamily,
     );
 
     return GestureDetector(
@@ -35,7 +39,7 @@ class EstimateScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: colorTheme.secondary,
+        backgroundColor: secondaryColor,
         body: ListenableBuilder(
           listenable: store,
           builder: (context, child) {
@@ -50,19 +54,19 @@ class EstimateScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text("Min", style: headerTitleStyle),
+                        Text(l10n.armMin, style: headerTitleStyle),
                         Text("${store.minRoll}", style: headerValueStyle),
                       ],
                     ),
                     Column(
                       children: [
-                        Text("Avg", style: headerTitleStyle),
+                        Text(l10n.armAverage, style: headerTitleStyle),
                         Text("${store.avgRoll}", style: headerValueStyle),
                       ],
                     ),
                     Column(
                       children: [
-                        Text("Max", style: headerTitleStyle),
+                        Text(l10n.armMax, style: headerTitleStyle),
                         Text("${store.maxRoll}", style: headerValueStyle),
                       ],
                     ),

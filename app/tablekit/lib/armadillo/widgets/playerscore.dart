@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tablekit/armadillo/stores/scoreboard_notifier.dart';
 import 'package:tablekit/armadillo/utility/constants.dart';
-import 'package:tablekit/armadillo/widgets/edit_score_dialog.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 
 class PlayerScoreCard extends StatelessWidget {
   final int playerIndex;
@@ -24,68 +24,154 @@ class PlayerScoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
 
-    return GestureDetector(
-      onTap: () => _showEditDialog(context),
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: defaultSpacing * 2,
+        vertical: defaultSpacing,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(defaultRounding),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: defaultSpacing * 2,
+              vertical: defaultSpacing * 2,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(defaultRounding),
+                topRight: Radius.circular(defaultRounding),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    name.toUpperCase(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: armadilloFontFamily,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: defaultSpacing * 2),
+                Text(
+                  totalScore.toString(),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: armadilloFontFamily,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Round scores
+          _buildRoundRow(
+            context,
+            round: 1,
+            label: l10n.arm1st,
+            score: round1Score,
+            surface: oddRowSurfaceColor,
+            onSurface: onSurfaceColor,
+          ),
+          _buildRoundRow(
+            context,
+            round: 2,
+            label: l10n.arm2nd,
+            score: round2Score,
+            surface: evenRowSurfaceColor,
+            onSurface: onSurfaceColor,
+          ),
+          _buildRoundRow(
+            context,
+            round: 3,
+            label: l10n.arm3rd,
+            score: round3Score,
+            surface: oddRowSurfaceColor,
+            onSurface: onSurfaceColor,
+            isLastRow: true,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRoundRow(
+    BuildContext context, {
+    required int round,
+    required String label,
+    required int score,
+    required Color surface,
+    required Color onSurface,
+    bool isLastRow = false,
+  }) {
+    final notifier = context.read<ScoreboardNotifier>();
+
+    void updateBy(int delta) {
+      final newScore = score + delta;
+      notifier.updateScore(playerIndex, round, newScore < 0 ? 0 : newScore);
+    }
+
+    return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: defaultSpacing * 2,
           vertical: defaultSpacing,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(defaultRounding),
+          borderRadius: isLastRow
+              ? BorderRadius.only(
+                  bottomLeft: Radius.circular(defaultRounding),
+                  bottomRight: Radius.circular(defaultRounding),
+                )
+              : null,
+          color: surface,
         ),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: defaultSpacing * 2,
-                vertical: defaultSpacing * 2,
+            Text(
+              label,
+              style: TextStyle(
+                color: onSurface,
+                fontSize: 25,
+                fontFamily: armadilloFontFamily,
               ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(defaultRounding),
-                  topRight: Radius.circular(defaultRounding),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _stepButton(
+                  isPositive: false,
+                  color: onSurface,
+                  onPressed: () => updateBy(-1),
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    name.toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: 30,
-                      overflow: TextOverflow.ellipsis,
+                SizedBox(
+                  width: 36,
+                  child: Text(
+                    score.toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: onSurface,
+                      fontSize: 25,
+                      fontFamily: armadilloFontFamily,
                     ),
                   ),
-                  Text(
-                    totalScore.toString(),
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                ],
-              ),
-            ),
-            // Round scores
-            _buildRoundRow(
-              '1ST',
-              round1Score,
-              oddRowSurfaceColor,
-              colorTheme.onSurface,
-            ),
-            _buildRoundRow(
-              '2ND',
-              round2Score,
-              evenRowSurfaceColor,
-              colorTheme.onSurface,
-            ),
-            _buildRoundRow(
-              '3RD',
-              round3Score,
-              oddRowSurfaceColor,
-              colorTheme.onSurface,
-              isLastRow: true,
+                ),
+                _stepButton(
+                  isPositive: true,
+                  color: onSurface,
+                  onPressed: () => updateBy(1),
+                ),
+              ],
             ),
           ],
         ),
@@ -93,55 +179,24 @@ class PlayerScoreCard extends StatelessWidget {
     );
   }
 
-  void _showEditDialog(BuildContext context) {
-    final notifier = context.read<ScoreboardNotifier>();
-
-    showDialog(
-      context: context,
-      builder: (context) => EditScoreDialog(
-        playerIndex: playerIndex,
-        playerName: name,
-        round1Score: round1Score,
-        round2Score: round2Score,
-        round3Score: round3Score,
-        onSave: (round, score) {
-          notifier.updateScore(playerIndex, round, score);
-        },
-      ),
-    );
-  }
-
-  Widget _buildRoundRow(
-    String round,
-    int score,
-    Color surface,
-    Color onSurface, {
-    bool isLastRow = false,
+  Widget _stepButton({
+    required bool isPositive,
+    required Color color,
+    required VoidCallback onPressed,
   }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: defaultSpacing * 2,
-        vertical: defaultSpacing * 1.5,
+    return IconButton(
+      icon: Text(
+        isPositive ? '+' : '-',
+        style: TextStyle(
+          color: color,
+          fontSize: 30,
+          fontFamily: armadilloFontFamily,
+        ),
       ),
-      decoration: BoxDecoration(
-        borderRadius: isLastRow
-            ? BorderRadius.only(
-                bottomLeft: Radius.circular(defaultRounding),
-                bottomRight: Radius.circular(defaultRounding),
-              )
-            : null,
-        color: surface,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(round, style: TextStyle(color: onSurface, fontSize: 20)),
-          Text(
-            score.toString(),
-            style: TextStyle(color: onSurface, fontSize: 25),
-          ),
-        ],
-      ),
+      constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+      padding: EdgeInsets.zero,
+      splashRadius: 20,
+      onPressed: onPressed,
     );
   }
 }

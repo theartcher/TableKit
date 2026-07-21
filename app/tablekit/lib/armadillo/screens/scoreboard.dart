@@ -3,13 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:tablekit/armadillo/stores/scoreboard_notifier.dart';
 import 'package:tablekit/armadillo/utility/constants.dart';
 import 'package:tablekit/armadillo/widgets/playerscore.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 
 class ScoreBoardScreen extends StatelessWidget {
   const ScoreBoardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
 
     return ChangeNotifierProvider(
       create: (_) => ScoreboardNotifier(),
@@ -23,7 +24,7 @@ class ScoreBoardScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          backgroundColor: colorTheme.tertiary,
+          backgroundColor: tertiaryColor,
           body: SafeArea(
             child: Consumer<ScoreboardNotifier>(
               builder: (context, notifier, _) {
@@ -37,18 +38,27 @@ class ScoreBoardScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: notifier.players.isEmpty
-                          ? const Center(
+                          ? Center(
                               child: Text(
-                                'No players created yet.',
+                                l10n.armNoPlayersYet,
                                 style: TextStyle(
                                   color: onTertiaryColor,
                                   fontSize: 18,
+                                  fontFamily: armadilloFontFamily,
                                 ),
                               ),
                             )
-                          : ListView.builder(
+                          : GridView.builder(
+                              shrinkWrap: true,
                               itemCount: notifier.players.length,
-                              itemBuilder: (context, index) {
+                              gridDelegate:
+                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 700,
+                                    mainAxisExtent: 300,
+                                    crossAxisSpacing: 16,
+                                    mainAxisSpacing: 16,
+                                  ),
+                              itemBuilder: (BuildContext context, int index) {
                                 final player = notifier.players[index];
 
                                 return PlayerScoreCard(
@@ -69,12 +79,13 @@ class ScoreBoardScreen extends StatelessWidget {
                         children: [
                           _scoreButton(
                             context,
-                            'ADD',
+                            l10n.armAdd,
                             () => _showAddPlayerDialog(context),
                           ),
+                          SizedBox(width: defaultSpacing * 2),
                           _scoreButton(
                             context,
-                            'RESET',
+                            l10n.armReset,
                             () => _showResetDialog(context),
                           ),
                         ],
@@ -93,14 +104,22 @@ class ScoreBoardScreen extends StatelessWidget {
   void _showAddPlayerDialog(BuildContext context) {
     final controller = TextEditingController();
     final notifier = context.read<ScoreboardNotifier>();
+    final l10n = AppLocalizations.of(context);
 
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Add Player'),
+        title: Text(
+          l10n.armAddPlayer,
+          style: TextStyle(fontFamily: armadilloFontFamily),
+        ),
         content: TextField(
           controller: controller,
-          decoration: const InputDecoration(hintText: 'Enter player name'),
+          decoration: InputDecoration(
+            hintText: l10n.armAddPlayerName,
+            hintStyle: TextStyle(fontFamily: armadilloFontFamily),
+            labelStyle: TextStyle(fontFamily: armadilloFontFamily),
+          ),
           maxLength: maxPlayerNameLength,
           textCapitalization: TextCapitalization.words,
           autofocus: true,
@@ -108,9 +127,12 @@ class ScoreBoardScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text(
-              'Cancel',
-              style: TextStyle(color: onSecondaryColor),
+            child: Text(
+              l10n.armCancel,
+              style: TextStyle(
+                color: onSecondaryColor,
+                fontFamily: armadilloFontFamily,
+              ),
             ),
           ),
           TextButton(
@@ -120,7 +142,13 @@ class ScoreBoardScreen extends StatelessWidget {
                 Navigator.pop(dialogContext);
               }
             },
-            child: const Text('Add', style: TextStyle(color: onSecondaryColor)),
+            child: Text(
+              l10n.armAdd,
+              style: TextStyle(
+                color: onSecondaryColor,
+                fontFamily: armadilloFontFamily,
+              ),
+            ),
           ),
         ],
       ),
@@ -129,23 +157,31 @@ class ScoreBoardScreen extends StatelessWidget {
 
   void _showResetDialog(BuildContext context) {
     final notifier = context.read<ScoreboardNotifier>();
+    final l10n = AppLocalizations.of(context);
 
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Reset Scoreboard'),
+        title: Text(
+          l10n.armResetScoreboard,
+          style: TextStyle(fontFamily: armadilloFontFamily),
+        ),
         content: Text(
           style: TextStyle(
             color: onSecondaryColor.withAlpha(217),
             fontSize: 20,
+            fontFamily: armadilloFontFamily,
           ),
-          'Do you want to reset just the scores or reset everything?',
+          l10n.armResetScoreboardMessage,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
             style: TextButton.styleFrom(foregroundColor: onSecondaryColor),
-            child: const Text('Cancel'),
+            child: Text(
+              l10n.armCancel,
+              style: TextStyle(fontFamily: armadilloFontFamily),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -153,7 +189,10 @@ class ScoreBoardScreen extends StatelessWidget {
               Navigator.pop(dialogContext);
             },
             style: TextButton.styleFrom(foregroundColor: onSecondaryColor),
-            child: const Text('Reset only scores'),
+            child: Text(
+              l10n.armResetScoresOnly,
+              style: TextStyle(fontFamily: armadilloFontFamily),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -161,7 +200,10 @@ class ScoreBoardScreen extends StatelessWidget {
               Navigator.pop(dialogContext);
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Reset players and scores'),
+            child: Text(
+              l10n.armResetEverything,
+              style: TextStyle(fontFamily: armadilloFontFamily),
+            ),
           ),
         ],
       ),
@@ -173,22 +215,28 @@ class ScoreBoardScreen extends StatelessWidget {
     String label,
     VoidCallback onPressed,
   ) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: onTertiaryColor,
-        foregroundColor: onSecondaryColor,
-        padding: const EdgeInsets.symmetric(
-          horizontal: defaultSpacing * 3,
-          vertical: defaultSpacing * 1.5,
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: onTertiaryColor,
+          foregroundColor: onSecondaryColor,
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultSpacing * 3,
+            vertical: defaultSpacing * 1.5,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(defaultRounding),
+          ),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(defaultRounding),
+        child: Text(
+          style: TextStyle(
+            fontSize: 20,
+            color: onSecondaryColor,
+            fontFamily: armadilloFontFamily,
+          ),
+          label,
         ),
-      ),
-      child: Text(
-        style: TextStyle(fontSize: 20, color: onSecondaryColor),
-        label,
       ),
     );
   }

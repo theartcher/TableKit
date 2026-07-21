@@ -19,9 +19,9 @@ const ROUTE_TBAG = "/tbag"; // 'Thousand Bombs and Grenades' -> TBAG
 const ROUTE_TBAG_DETAILS = "details/:cardId";
 
 const ROUTE_ARMADILLO = "/armadillo";
-const ROUTE_CALCULATE = '$ROUTE_ARMADILLO/calculate';
-const ROUTE_ESTIMATE = '$ROUTE_ARMADILLO/estimate';
-const ROUTE_SCOREBOARD = '$ROUTE_ARMADILLO/scoreboard';
+const ROUTE_CALCULATE = "calculate";
+const ROUTE_ESTIMATE = "estimate";
+const ROUTE_SCOREBOARD = "scoreboard";
 
 final GoRouter routerConfig = GoRouter(
   errorPageBuilder: (context, state) => MaterialPage(

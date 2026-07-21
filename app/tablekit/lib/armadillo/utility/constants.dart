@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:go_transitions/go_transitions.dart';
-import 'package:tablekit/armadillo/screens/calculate.dart';
-import 'package:tablekit/armadillo/screens/estimate.dart';
-import 'package:tablekit/armadillo/screens/home.dart';
-import 'package:tablekit/armadillo/screens/scoreboard.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Animation & Padding
 const defaultSpacing = 8.0;
@@ -17,6 +12,8 @@ const maxPlayerNameLength = 25;
 // Card Values
 const maxCardValue = 20;
 const minCardValue = 1;
+
+final armadilloFontFamily = GoogleFonts.luckiestGuy().fontFamily;
 
 // Color Palette
 const Color primaryColor = Color.fromARGB(255, 102, 93, 85);
@@ -38,21 +35,8 @@ const Color onBlueDiceColor = Color.fromRGBO(255, 255, 255, 1);
 const Color yellowDiceColor = Color.fromRGBO(218, 169, 60, 1);
 const Color onYellowDiceColor = Color.fromRGBO(0, 0, 0, 1);
 
-// Define theme
-var theme = ThemeData(
-  useMaterial3: true,
-  fontFamily: "LuckiestGuy",
-  colorScheme: ColorScheme(
-    brightness: Brightness.light,
-    primary: primaryColor,
-    onPrimary: onPrimaryColor,
-    secondary: secondaryColor,
-    onSecondary: onSecondaryColor,
-    tertiary: tertiaryColor,
-    onTertiary: onTertiaryColor,
-    error: Colors.red.shade700,
-    onError: Colors.white,
-    surface: Colors.white,
-    onSurface: Colors.black87,
-  ),
-);
+// Default colors
+final Color errorColor = Colors.red.shade700;
+const Color onErrorColor = Colors.white;
+const Color surfaceColor = Colors.white;
+const Color onSurfaceColor = Colors.black87;

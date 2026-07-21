@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tablekit/armadillo/utility/constants.dart';
 
 class DesiredAmountButton extends StatelessWidget {
   final VoidCallback onPress;
@@ -17,12 +18,12 @@ class DesiredAmountButton extends StatelessWidget {
     final colorTheme = Theme.of(context).colorScheme;
 
     final backgroundColor = isDisabled
-        ? colorTheme.onPrimary.withValues(alpha: 0.4)
-        : colorTheme.onPrimary;
+        ? onPrimaryColor.withValues(alpha: 0.4)
+        : onPrimaryColor;
 
     final textColor = isDisabled
-        ? colorTheme.onSecondary.withValues(alpha: 0.4)
-        : colorTheme.onSecondary;
+        ? onSecondaryColor.withValues(alpha: 0.4)
+        : onSecondaryColor;
 
     return Expanded(
       child: AnimatedOpacity(
@@ -51,6 +52,7 @@ class DesiredAmountButton extends StatelessWidget {
                       style: TextStyle(
                         color: textColor,
                         fontSize: 40,
+                        fontFamily: armadilloFontFamily,
                       ),
                     ),
                   ),

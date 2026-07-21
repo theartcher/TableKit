@@ -3,13 +3,14 @@ import 'package:tablekit/armadillo/stores/calculate_notifier.dart';
 import 'package:tablekit/armadillo/utility/constants.dart';
 import 'package:tablekit/armadillo/widgets/desired_amount_button.dart';
 import 'package:tablekit/armadillo/widgets/dice.dart';
+import 'package:tablekit/l10n/generated/app_localizations.dart';
 
 class CalculateScreen extends StatelessWidget {
   const CalculateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     final store = CalculateNotifier();
 
     bool isButtonDisabled(int desiredChange) {
@@ -32,27 +33,39 @@ class CalculateScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: colorTheme.primary,
+        backgroundColor: primaryColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: defaultSpacing,
           children: [
             Text(
-              "I want to roll a...",
-              style: TextStyle(fontSize: 30, color: colorTheme.onPrimary),
+              l10n.armEstimateHeaderSection1,
+              style: TextStyle(
+                fontSize: 30,
+                color: onPrimaryColor,
+                fontFamily: armadilloFontFamily,
+              ),
             ),
             ListenableBuilder(
               listenable: store,
               builder: (context, child) {
                 return Text(
                   "${store.desiredRoll}",
-                  style: TextStyle(fontSize: 80, color: colorTheme.onPrimary),
+                  style: TextStyle(
+                    fontSize: 80,
+                    color: onPrimaryColor,
+                    fontFamily: armadilloFontFamily,
+                  ),
                 );
               },
             ),
             Text(
-              "You should throw...",
-              style: TextStyle(fontSize: 30, color: colorTheme.onPrimary),
+              l10n.armEstimateHeaderSection2,
+              style: TextStyle(
+                fontSize: 30,
+                color: onPrimaryColor,
+                fontFamily: armadilloFontFamily,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: defaultSpacing * 2),
