@@ -282,7 +282,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get armAverage => 'Avg';
 
   @override
-  String get armEstimateHeaderSection1 => 'I want to roll the a...';
+  String get armEstimateHeaderSection1 => 'I want to roll a...';
 
   @override
   String get armEstimateHeaderSection2 => 'You should throw...';

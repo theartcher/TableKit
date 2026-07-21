@@ -581,7 +581,7 @@ abstract class AppLocalizations {
   /// No description provided for @armEstimateHeaderSection1.
   ///
   /// In en, this message translates to:
-  /// **'I want to roll the a...'**
+  /// **'I want to roll a...'**
   String get armEstimateHeaderSection1;
 
   /// No description provided for @armEstimateHeaderSection2.

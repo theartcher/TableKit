@@ -43,90 +43,104 @@ class EstimateScreen extends StatelessWidget {
         body: ListenableBuilder(
           listenable: store,
           builder: (context, child) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: diceSpacing,
-              children: [
-                Row(
+            return Center(
+              child: SingleChildScrollView(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: diceSpacing * 1.5,
-                  children: [
-                    Column(
-                      children: [
-                        Text(l10n.armMin, style: headerTitleStyle),
-                        Text("${store.minRoll}", style: headerValueStyle),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(l10n.armAverage, style: headerTitleStyle),
-                        Text("${store.avgRoll}", style: headerValueStyle),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(l10n.armMax, style: headerTitleStyle),
-                        Text("${store.maxRoll}", style: headerValueStyle),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: diceSpacing,
                   children: [
-                    Dice(
-                      diceType: DiceType.low,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.blue1),
-                      disabled: !store.selectedDie[DiceIndex.blue1]!.enabled,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: diceSpacing * 1.5,
+                      children: [
+                        Column(
+                          children: [
+                            Text(l10n.armMin, style: headerTitleStyle),
+                            Text("${store.minRoll}", style: headerValueStyle),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(l10n.armAverage, style: headerTitleStyle),
+                            Text("${store.avgRoll}", style: headerValueStyle),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(l10n.armMax, style: headerTitleStyle),
+                            Text("${store.maxRoll}", style: headerValueStyle),
+                          ],
+                        ),
+                      ],
                     ),
-                    Dice(
-                      diceType: DiceType.low,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.blue2),
-                      disabled: !store.selectedDie[DiceIndex.blue2]!.enabled,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: diceSpacing,
+                      children: [
+                        Dice(
+                          diceType: DiceType.low,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.blue1),
+                          disabled:
+                              !store.selectedDie[DiceIndex.blue1]!.enabled,
+                        ),
+                        Dice(
+                          diceType: DiceType.low,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.blue2),
+                          disabled:
+                              !store.selectedDie[DiceIndex.blue2]!.enabled,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      spacing: diceSpacing,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Dice(
+                          diceType: DiceType.middle,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.yellow1),
+                          disabled:
+                              !store.selectedDie[DiceIndex.yellow1]!.enabled,
+                        ),
+                        Dice(
+                          diceType: DiceType.middle,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.yellow2),
+                          disabled:
+                              !store.selectedDie[DiceIndex.yellow2]!.enabled,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      spacing: diceSpacing,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Dice(
+                          diceType: DiceType.high,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.red1),
+                          disabled: !store.selectedDie[DiceIndex.red1]!.enabled,
+                        ),
+                        Dice(
+                          diceType: DiceType.high,
+                          size: DiceSize.large,
+                          onPress: () =>
+                              store.toggleDiceEnabled(DiceIndex.red2),
+                          disabled: !store.selectedDie[DiceIndex.red2]!.enabled,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Row(
-                  spacing: diceSpacing,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Dice(
-                      diceType: DiceType.middle,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.yellow1),
-                      disabled: !store.selectedDie[DiceIndex.yellow1]!.enabled,
-                    ),
-                    Dice(
-                      diceType: DiceType.middle,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.yellow2),
-                      disabled: !store.selectedDie[DiceIndex.yellow2]!.enabled,
-                    ),
-                  ],
-                ),
-                Row(
-                  spacing: diceSpacing,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Dice(
-                      diceType: DiceType.high,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.red1),
-                      disabled: !store.selectedDie[DiceIndex.red1]!.enabled,
-                    ),
-                    Dice(
-                      diceType: DiceType.high,
-                      size: DiceSize.large,
-                      onPress: () => store.toggleDiceEnabled(DiceIndex.red2),
-                      disabled: !store.selectedDie[DiceIndex.red2]!.enabled,
-                    ),
-                  ],
-                ),
-              ],
+              ),
             );
           },
         ),

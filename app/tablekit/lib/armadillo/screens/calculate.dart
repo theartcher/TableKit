@@ -34,120 +34,129 @@ class CalculateScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: primaryColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: defaultSpacing,
-          children: [
-            Text(
-              l10n.armEstimateHeaderSection1,
-              style: TextStyle(
-                fontSize: 30,
-                color: onPrimaryColor,
-                fontFamily: armadilloFontFamily,
-              ),
-            ),
-            ListenableBuilder(
-              listenable: store,
-              builder: (context, child) {
-                return Text(
-                  "${store.desiredRoll}",
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: defaultSpacing,
+              children: [
+                Text(
+                  l10n.armEstimateHeaderSection1,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 80,
+                    fontSize: 30,
                     color: onPrimaryColor,
                     fontFamily: armadilloFontFamily,
                   ),
-                );
-              },
-            ),
-            Text(
-              l10n.armEstimateHeaderSection2,
-              style: TextStyle(
-                fontSize: 30,
-                color: onPrimaryColor,
-                fontFamily: armadilloFontFamily,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: defaultSpacing * 2),
-              child: ListenableBuilder(
-                listenable: store,
-                builder: (context, child) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: store.die
-                        .map(
-                          (diceType) => Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: defaultSpacing / 2,
-                            ),
-                            child: Dice(diceType: diceType),
-                          ),
-                        )
-                        .toList(),
-                  );
-                },
-              ),
-            ),
-            ListenableBuilder(
-              listenable: store,
-              builder: (context, child) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    0,
-                    0,
-                    defaultSpacing * 2,
-                    0,
+                ),
+                ListenableBuilder(
+                  listenable: store,
+                  builder: (context, child) {
+                    return Text(
+                      "${store.desiredRoll}",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 80,
+                        color: onPrimaryColor,
+                        fontFamily: armadilloFontFamily,
+                      ),
+                    );
+                  },
+                ),
+                Text(
+                  l10n.armEstimateHeaderSection2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: onPrimaryColor,
+                    fontFamily: armadilloFontFamily,
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          DesiredAmountButton(
-                            onPress: () => store.decrement(1),
-                            amountToChange: -1,
-                            isDisabled: isButtonDisabled(-1),
-                          ),
-                          DesiredAmountButton(
-                            onPress: () => store.increment(1),
-                            amountToChange: 1,
-                            isDisabled: isButtonDisabled(1),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          DesiredAmountButton(
-                            onPress: () => store.decrement(5),
-                            amountToChange: -5,
-                            isDisabled: isButtonDisabled(-5),
-                          ),
-                          DesiredAmountButton(
-                            onPress: () => store.increment(5),
-                            amountToChange: 5,
-                            isDisabled: isButtonDisabled(5),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          DesiredAmountButton(
-                            onPress: () => store.decrement(10),
-                            amountToChange: -10,
-                            isDisabled: isButtonDisabled(-10),
-                          ),
-                          DesiredAmountButton(
-                            onPress: () => store.increment(10),
-                            amountToChange: 10,
-                            isDisabled: isButtonDisabled(10),
-                          ),
-                        ],
-                      ),
-                    ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: defaultSpacing * 2,
                   ),
-                );
-              },
+                  child: ListenableBuilder(
+                    listenable: store,
+                    builder: (context, child) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: store.die
+                            .map(
+                              (diceType) => Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: defaultSpacing / 2,
+                                ),
+                                child: Dice(diceType: diceType),
+                              ),
+                            )
+                            .toList(),
+                      );
+                    },
+                  ),
+                ),
+                ListenableBuilder(
+                  listenable: store,
+                  builder: (context, child) {
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        0,
+                        0,
+                        defaultSpacing * 2,
+                        0,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              DesiredAmountButton(
+                                onPress: () => store.decrement(1),
+                                amountToChange: -1,
+                                isDisabled: isButtonDisabled(-1),
+                              ),
+                              DesiredAmountButton(
+                                onPress: () => store.increment(1),
+                                amountToChange: 1,
+                                isDisabled: isButtonDisabled(1),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              DesiredAmountButton(
+                                onPress: () => store.decrement(5),
+                                amountToChange: -5,
+                                isDisabled: isButtonDisabled(-5),
+                              ),
+                              DesiredAmountButton(
+                                onPress: () => store.increment(5),
+                                amountToChange: 5,
+                                isDisabled: isButtonDisabled(5),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              DesiredAmountButton(
+                                onPress: () => store.decrement(10),
+                                amountToChange: -10,
+                                isDisabled: isButtonDisabled(-10),
+                              ),
+                              DesiredAmountButton(
+                                onPress: () => store.increment(10),
+                                amountToChange: 10,
+                                isDisabled: isButtonDisabled(10),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
