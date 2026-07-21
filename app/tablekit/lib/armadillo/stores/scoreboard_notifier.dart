@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -14,6 +16,13 @@ class ScoreboardNotifier extends ChangeNotifier {
     _loadScoreboard();
   }
 
+  @override
+  void dispose() {
+    _saveDebounce?.cancel();
+    _saveScoreboard();
+    super.dispose();
+  }
+
   /// Load scoreboard from local storage
   Future<void> _loadScoreboard() async {
     final localPreferences = await SharedPreferences.getInstance();
@@ -21,12 +30,20 @@ class ScoreboardNotifier extends ChangeNotifier {
 
     if (rawScoreBoard != null && rawScoreBoard.isNotEmpty) {
       final List<dynamic> scoreBoard = jsonDecode(rawScoreBoard);
-      _players =
-          scoreBoard.map((json) => PlayerScoreData.fromJson(json)).toList();
+      _players = scoreBoard
+          .map((json) => PlayerScoreData.fromJson(json))
+          .toList();
     }
 
     _isLoading = false;
     notifyListeners();
+  }
+
+  Timer? _saveDebounce;
+
+  void _scheduleSave() {
+    _saveDebounce?.cancel();
+    _saveDebounce = Timer(const Duration(milliseconds: 300), _saveScoreboard);
   }
 
   /// Save scoreboard to local storage
@@ -43,14 +60,14 @@ class ScoreboardNotifier extends ChangeNotifier {
 
     _players.add(PlayerScoreData(name: name.trim()));
     notifyListeners();
-    _saveScoreboard();
+    _scheduleSave();
   }
 
   void removePlayer(int index) {
     if (index >= 0 && index < _players.length) {
       _players.removeAt(index);
       notifyListeners();
-      _saveScoreboard();
+      _scheduleSave();
     }
   }
 
@@ -58,7 +75,7 @@ class ScoreboardNotifier extends ChangeNotifier {
     if (playerIndex >= 0 && playerIndex < _players.length) {
       _players[playerIndex].setScore(round, score);
       notifyListeners();
-      _saveScoreboard();
+      _scheduleSave();
     }
   }
 
@@ -67,13 +84,13 @@ class ScoreboardNotifier extends ChangeNotifier {
       player.resetScores();
     }
     notifyListeners();
-    _saveScoreboard();
+    _scheduleSave();
   }
 
   void clearAll() {
     _players.clear();
     notifyListeners();
-    _saveScoreboard();
+    _scheduleSave();
   }
 
   Future<void> refresh() async {
@@ -119,11 +136,11 @@ class PlayerScoreData {
   }
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'round1Score': round1Score,
-        'round2Score': round2Score,
-        'round3Score': round3Score,
-      };
+    'name': name,
+    'round1Score': round1Score,
+    'round2Score': round2Score,
+    'round3Score': round3Score,
+  };
 
   factory PlayerScoreData.fromJson(Map<String, dynamic> json) =>
       PlayerScoreData(
