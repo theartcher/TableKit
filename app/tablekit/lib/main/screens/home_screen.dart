@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
         'textColor': const Color(0xFFC27803),
         'containerColor': const Color(0xFFE8DCC4),
         'routeKey': ROUTE_ARMADILLO,
+        'isDisabled': true,
       },
       {
         'title': l10n.thousandBombsTitle,
@@ -52,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                       gameData['textColor'] as Color,
                       gameData['containerColor'] as Color,
                       gameData['routeKey'] as String,
+                      isDisabled: gameData['isDisabled'] as bool? ?? false,
                     );
                   },
                   separatorBuilder: (context, index) =>

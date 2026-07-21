@@ -4,6 +4,7 @@ import 'package:tablekit/1000_bombs_and_grenades/models/card_data.dart';
 
 const backgroundColor = Color(0xFF171717);
 const onBackgroundColor = Color(0xFFFFFFFF);
+
 const primaryColor = Color(0xFF333333);
 const onPrimaryColor = Color(0xFFFFFFFF);
 
@@ -36,7 +37,7 @@ final List<CardData> pirateCards = [
     explanation: (l10n) => l10n.cardPirateExplanation,
     facts: [
       CardFact.bonus((l10n) => l10n.cardPirateFactBonus),
-      CardFact.risk((l10n) => l10n.cardPirateFactRisk),
+      CardFact.bonus((l10n) => l10n.cardPirateFactBonus2),
     ],
   ),
   CardData(
@@ -62,9 +63,10 @@ final List<CardData> pirateCards = [
     name: (l10n) => l10n.cardBattleshipTitle,
     explanation: (l10n) => l10n.cardBattleshipExplanation,
     facts: [
+      CardFact.bonus((l10n) => l10n.cardBattleshipFactBonus),
       CardFact.limit((l10n) => l10n.cardBattleshipFactLimit),
-      CardFact.risk((l10n) => l10n.cardBattleshipFactRisk),
       CardFact.limit((l10n) => l10n.cardBattleshipFactLimit2),
+      CardFact.risk((l10n) => l10n.cardBattleshipFactRisk),
     ],
   ),
   CardData(
@@ -100,8 +102,10 @@ final List<CardData> pirateCards = [
     name: (l10n) => l10n.cardZombieAttackTitle,
     explanation: (l10n) => l10n.cardZombieAttackExplanation,
     facts: [
-      CardFact.limit((l10n) => l10n.cardZombieAttackFactLimit),
-      CardFact.bonus((l10n) => l10n.cardZombieAttackFactBonus),
+      CardFact.bonus((l10n) => l10n.cardZombieAttackFactBonus1),
+      CardFact.bonus((l10n) => l10n.cardZombieAttackFactBonus2),
+      CardFact.limit((l10n) => l10n.cardZombieAttackFactLimit1),
+      CardFact.limit((l10n) => l10n.cardZombieAttackFactLimit2),
       CardFact.risk((l10n) => l10n.cardZombieAttackFactRisk),
     ],
   ),
@@ -110,8 +114,11 @@ final List<CardData> pirateCards = [
     name: (l10n) => l10n.cardShipwreckTitle,
     explanation: (l10n) => l10n.cardShipwreckExplanation,
     facts: [
-      CardFact.limit((l10n) => l10n.cardShipwreckFactLimit),
       CardFact.bonus((l10n) => l10n.cardShipwreckFactBonus),
+      CardFact.bonus((l10n) => l10n.cardShipwreckFactBonus1),
+      CardFact.limit((l10n) => l10n.cardShipwreckFactLimit),
+      CardFact.limit((l10n) => l10n.cardShipwreckFactLimit2),
+      CardFact.limit((l10n) => l10n.cardShipwreckFactLimit3),
     ],
   ),
 ];
