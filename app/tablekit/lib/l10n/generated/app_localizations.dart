@@ -104,6 +104,24 @@ abstract class AppLocalizations {
   /// **'TableKit'**
   String get appTitle;
 
+  /// No description provided for @notFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Hmmm that page doesn\'t exist. Try going back to the home page.'**
+  String get notFound;
+
+  /// No description provided for @notFoundAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to home page'**
+  String get notFoundAction;
+
+  /// No description provided for @disabledGameMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This game is currently disabled. Please check back later.'**
+  String get disabledGameMessage;
+
   /// No description provided for @headerTitle.
   ///
   /// In en, this message translates to:
@@ -140,6 +158,12 @@ abstract class AppLocalizations {
   /// **'How does the card work?'**
   String get cardExplanationTitle;
 
+  /// No description provided for @tbagHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **' 1000 Bombs and Grenades'**
+  String get tbagHeaderTitle;
+
   /// Title of the Treasure Island pirate card
   ///
   /// In en, this message translates to:
@@ -155,7 +179,7 @@ abstract class AppLocalizations {
   /// No description provided for @cardTreasureIslandFactBonus.
   ///
   /// In en, this message translates to:
-  /// **'Dice placed on the card are protected from a 3rd skull'**
+  /// **'Dice placed on the card still count even when a 3rd skull is thrown'**
   String get cardTreasureIslandFactBonus;
 
   /// No description provided for @cardTreasureIslandFactLimit.
@@ -182,11 +206,11 @@ abstract class AppLocalizations {
   /// **'All points scored this turn are doubled'**
   String get cardPirateFactBonus;
 
-  /// No description provided for @cardPirateFactRisk.
+  /// No description provided for @cardPirateFactBonus2.
   ///
   /// In en, this message translates to:
   /// **'Sailing to Skull Island also doubles the penalty for the other players'**
-  String get cardPirateFactRisk;
+  String get cardPirateFactBonus2;
 
   /// Title of the Skull pirate card
   ///
@@ -233,7 +257,7 @@ abstract class AppLocalizations {
   /// No description provided for @cardGuardFactLimit.
   ///
   /// In en, this message translates to:
-  /// **'3 skulls still end your turn immediately, even before you can use this'**
+  /// **'3 skulls still end your turn immediately'**
   String get cardGuardFactLimit;
 
   /// Title of the Battleship pirate card
@@ -247,6 +271,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You must throw at least the number of sabres shown on the card, then stop your turn voluntarily. Succeed, and you score bonus points on top of your usual score. Fail, and you score nothing and lose points instead. You can never sail to Skull Island with this card.'**
   String get cardBattleshipExplanation;
+
+  /// No description provided for @cardBattleshipFactBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive a bonus on top of the usual score if you throw the shown number of sabres'**
+  String get cardBattleshipFactBonus;
 
   /// No description provided for @cardBattleshipFactLimit.
   ///
@@ -329,13 +359,13 @@ abstract class AppLocalizations {
   /// No description provided for @cardPeaceExplanation.
   ///
   /// In en, this message translates to:
-  /// **'You must finish your turn without throwing a single sabre. Succeed, and your points for the turn are doubled. Fail, and you score nothing and lose 500 points per sabre thrown instead. If you sail to Skull Island, the no-sabre rule applies there too.'**
+  /// **'You must finish your turn without a single sabre die on the table. Succeed, and your points for the turn are doubled. Fail, and you score nothing and lose 500 points per sabre thrown instead. If you sail to Skull Island, the no-sabre rule applies there too.'**
   String get cardPeaceExplanation;
 
   /// No description provided for @cardPeaceFactBonus.
   ///
   /// In en, this message translates to:
-  /// **'Finish the turn with no sabres thrown and double your points'**
+  /// **'Finish the turn with no sabres on the table and double your points'**
   String get cardPeaceFactBonus;
 
   /// No description provided for @cardPeaceFactRisk.
@@ -362,22 +392,34 @@ abstract class AppLocalizations {
   /// **'Keep throwing until every die shows either a sabre or a skull. Skulls can\'t be rerolled, but 3 or more skulls don\'t end your turn and you can\'t sail to Skull Island. Throw at least 5 sabres in total and you score 1200 points; fall short, and those 1200 points are split among the other players instead.'**
   String get cardZombieAttackExplanation;
 
-  /// No description provided for @cardZombieAttackFactLimit.
+  /// No description provided for @cardZombieAttackFactLimit1.
   ///
   /// In en, this message translates to:
-  /// **'Keep throwing until every die shows a sabre or a skull; skulls don\'t end the turn or send you to Skull Island'**
-  String get cardZombieAttackFactLimit;
+  /// **'Keep throwing until every die shows a sabre or a skull'**
+  String get cardZombieAttackFactLimit1;
 
-  /// No description provided for @cardZombieAttackFactBonus.
+  /// No description provided for @cardZombieAttackFactLimit2.
+  ///
+  /// In en, this message translates to:
+  /// **'You cannot go to skull island'**
+  String get cardZombieAttackFactLimit2;
+
+  /// No description provided for @cardZombieAttackFactBonus1.
   ///
   /// In en, this message translates to:
   /// **'5 or more sabres thrown in total earns 1200 points'**
-  String get cardZombieAttackFactBonus;
+  String get cardZombieAttackFactBonus1;
+
+  /// No description provided for @cardZombieAttackFactBonus2.
+  ///
+  /// In en, this message translates to:
+  /// **'3 or more skulls don\'t end your turn'**
+  String get cardZombieAttackFactBonus2;
 
   /// No description provided for @cardZombieAttackFactRisk.
   ///
   /// In en, this message translates to:
-  /// **'Fewer than 5 sabres and the 1200 points go to the other players instead'**
+  /// **'Fewer than 5 sabres and the 1200 points are divided among the other players instead'**
   String get cardZombieAttackFactRisk;
 
   /// Title of the Shipwreck pirate card
@@ -389,20 +431,38 @@ abstract class AppLocalizations {
   /// No description provided for @cardShipwreckExplanation.
   ///
   /// In en, this message translates to:
-  /// **'You may only throw twice. Skulls can\'t be rerolled, but even 3 or more skulls don\'t stop your second throw — you just can\'t sail to Skull Island. After the second throw, only diamonds and gold coins score, and their points are doubled.'**
+  /// **'You may only throw twice. Skulls can\'t be rerolled, but even 3 or more skulls don\'t stop your second throw. You just can\'t sail to Skull Island. Only diamonds and gold coins score, and their points are doubled.'**
   String get cardShipwreckExplanation;
 
   /// No description provided for @cardShipwreckFactLimit.
   ///
   /// In en, this message translates to:
-  /// **'Only two throws allowed; skulls don\'t stop the second throw, but Skull Island isn\'t possible'**
+  /// **'You may only throw twice'**
   String get cardShipwreckFactLimit;
+
+  /// No description provided for @cardShipwreckFactLimit2.
+  ///
+  /// In en, this message translates to:
+  /// **'You can\'t sail to Skull Island'**
+  String get cardShipwreckFactLimit2;
+
+  /// No description provided for @cardShipwreckFactLimit3.
+  ///
+  /// In en, this message translates to:
+  /// **'Only diamonds and gold coins score points.'**
+  String get cardShipwreckFactLimit3;
 
   /// No description provided for @cardShipwreckFactBonus.
   ///
   /// In en, this message translates to:
-  /// **'After the second throw, only diamonds and gold coins score — doubled'**
+  /// **'You cannot die with 3 skulls'**
   String get cardShipwreckFactBonus;
+
+  /// No description provided for @cardShipwreckFactBonus1.
+  ///
+  /// In en, this message translates to:
+  /// **'Your score is doubled'**
+  String get cardShipwreckFactBonus1;
 }
 
 class _AppLocalizationsDelegate

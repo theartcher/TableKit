@@ -30,7 +30,7 @@ class FactPill extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Flexible(
+          Expanded(
             child: Text(
               fact.text(l10n),
               style: TextStyle(

@@ -12,6 +12,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'TableKit';
 
   @override
+  String get notFound =>
+      'Hmmm that page doesn\'t exist. Try going back to the home page.';
+
+  @override
+  String get notFoundAction => 'Back to home page';
+
+  @override
+  String get disabledGameMessage =>
+      'This game is currently disabled. Please check back later.';
+
+  @override
   String get headerTitle => 'TABLEKIT';
 
   @override
@@ -30,6 +41,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardExplanationTitle => 'How does the card work?';
 
   @override
+  String get tbagHeaderTitle => ' 1000 Bombs and Grenades';
+
+  @override
   String get cardTreasureIslandTitle => 'Treasure Island';
 
   @override
@@ -38,7 +52,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardTreasureIslandFactBonus =>
-      'Dice placed on the card are protected from a 3rd skull';
+      'Dice placed on the card still count even when a 3rd skull is thrown';
 
   @override
   String get cardTreasureIslandFactLimit =>
@@ -55,7 +69,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardPirateFactBonus => 'All points scored this turn are doubled';
 
   @override
-  String get cardPirateFactRisk =>
+  String get cardPirateFactBonus2 =>
       'Sailing to Skull Island also doubles the penalty for the other players';
 
   @override
@@ -83,8 +97,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardGuardFactBonus => 'Reroll one thrown skull, once per turn';
 
   @override
-  String get cardGuardFactLimit =>
-      '3 skulls still end your turn immediately, even before you can use this';
+  String get cardGuardFactLimit => '3 skulls still end your turn immediately';
 
   @override
   String get cardBattleshipTitle => 'Battleship';
@@ -92,6 +105,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get cardBattleshipExplanation =>
       'You must throw at least the number of sabres shown on the card, then stop your turn voluntarily. Succeed, and you score bonus points on top of your usual score. Fail, and you score nothing and lose points instead. You can never sail to Skull Island with this card.';
+
+  @override
+  String get cardBattleshipFactBonus =>
+      'Receive a bonus on top of the usual score if you throw the shown number of sabres';
 
   @override
   String get cardBattleshipFactLimit =>
@@ -143,11 +160,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardPeaceExplanation =>
-      'You must finish your turn without throwing a single sabre. Succeed, and your points for the turn are doubled. Fail, and you score nothing and lose 500 points per sabre thrown instead. If you sail to Skull Island, the no-sabre rule applies there too.';
+      'You must finish your turn without a single sabre die on the table. Succeed, and your points for the turn are doubled. Fail, and you score nothing and lose 500 points per sabre thrown instead. If you sail to Skull Island, the no-sabre rule applies there too.';
 
   @override
   String get cardPeaceFactBonus =>
-      'Finish the turn with no sabres thrown and double your points';
+      'Finish the turn with no sabres on the table and double your points';
 
   @override
   String get cardPeaceFactRisk =>
@@ -165,29 +182,44 @@ class AppLocalizationsEn extends AppLocalizations {
       'Keep throwing until every die shows either a sabre or a skull. Skulls can\'t be rerolled, but 3 or more skulls don\'t end your turn and you can\'t sail to Skull Island. Throw at least 5 sabres in total and you score 1200 points; fall short, and those 1200 points are split among the other players instead.';
 
   @override
-  String get cardZombieAttackFactLimit =>
-      'Keep throwing until every die shows a sabre or a skull; skulls don\'t end the turn or send you to Skull Island';
+  String get cardZombieAttackFactLimit1 =>
+      'Keep throwing until every die shows a sabre or a skull';
 
   @override
-  String get cardZombieAttackFactBonus =>
+  String get cardZombieAttackFactLimit2 => 'You cannot go to skull island';
+
+  @override
+  String get cardZombieAttackFactBonus1 =>
       '5 or more sabres thrown in total earns 1200 points';
 
   @override
+  String get cardZombieAttackFactBonus2 =>
+      '3 or more skulls don\'t end your turn';
+
+  @override
   String get cardZombieAttackFactRisk =>
-      'Fewer than 5 sabres and the 1200 points go to the other players instead';
+      'Fewer than 5 sabres and the 1200 points are divided among the other players instead';
 
   @override
   String get cardShipwreckTitle => 'Shipwreck';
 
   @override
   String get cardShipwreckExplanation =>
-      'You may only throw twice. Skulls can\'t be rerolled, but even 3 or more skulls don\'t stop your second throw — you just can\'t sail to Skull Island. After the second throw, only diamonds and gold coins score, and their points are doubled.';
+      'You may only throw twice. Skulls can\'t be rerolled, but even 3 or more skulls don\'t stop your second throw. You just can\'t sail to Skull Island. Only diamonds and gold coins score, and their points are doubled.';
 
   @override
-  String get cardShipwreckFactLimit =>
-      'Only two throws allowed; skulls don\'t stop the second throw, but Skull Island isn\'t possible';
+  String get cardShipwreckFactLimit => 'You may only throw twice';
 
   @override
-  String get cardShipwreckFactBonus =>
-      'After the second throw, only diamonds and gold coins score — doubled';
+  String get cardShipwreckFactLimit2 => 'You can\'t sail to Skull Island';
+
+  @override
+  String get cardShipwreckFactLimit3 =>
+      'Only diamonds and gold coins score points.';
+
+  @override
+  String get cardShipwreckFactBonus => 'You cannot die with 3 skulls';
+
+  @override
+  String get cardShipwreckFactBonus1 => 'Your score is doubled';
 }
